@@ -19,7 +19,7 @@ install:
 .PHONY: installLinux
 installLinux:
 	$(eval PREFIX ?= /usr)
-	if [ -d "/usr/lib64" ]; then mkdir -p $(PREFIX)/lib64 && cp libuWS.so $(PREFIX)/lib64/; else mkdir -p $(PREFIX)/lib && cp libuWS.so $(PREFIX)/lib/; fi
+	if [ -d "/usr/lib64" ]; then mkdir -p $(PREFIX)/lib64 && cp libuWS.so $(PREFIX)/lib64/ && cp libuWS.a $(PREFIX)/lib/64; else mkdir -p $(PREFIX)/lib && cp libuWS.so $(PREFIX)/lib/ && cp libuWS.a $(PREFIX)/lib/; fi
 	mkdir -p $(PREFIX)/include/uWS
 	cp src/*.h $(PREFIX)/include/uWS/
 .PHONY: installDarwin
@@ -27,6 +27,7 @@ installDarwin:
 	$(eval PREFIX ?= /usr/local)
 	mkdir -p $(PREFIX)/lib
 	cp libuWS.dylib $(PREFIX)/lib/
+	cp libuWS.a $(PREFIX)/lib/
 	mkdir -p $(PREFIX)/include/uWS
 	cp src/*.h $(PREFIX)/include/uWS/
 .PHONY: clean
